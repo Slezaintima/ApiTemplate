@@ -81,3 +81,6 @@ publish/
 
 # Local History for Visual Studio
 .localhistory/
+
+# log files
+**/AppData/*

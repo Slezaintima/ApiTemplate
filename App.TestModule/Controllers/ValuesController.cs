@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using App.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace App.Example.Controllers
 {
@@ -16,12 +10,15 @@ namespace App.Example.Controllers
     {
         readonly ISomeService _service;
         readonly IAnotherService _anotherService;
+        readonly ILogger<ValuesController> _logger;
         public ValuesController(
             ISomeService service,
-            IAnotherService anotherService)
+            IAnotherService anotherService,
+            ILogger<ValuesController> logger)
         {
             _service = service;
             _anotherService = anotherService;
+            _logger = logger;
         }
 
         // GET api/values
@@ -30,6 +27,7 @@ namespace App.Example.Controllers
         {
             _service.DoSmth();
             _anotherService.DoAnything();
+            _logger.LogInformation("ZAZAZAZA");
             return new string[] { "value1", "value2" };
         }
 
