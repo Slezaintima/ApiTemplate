@@ -1,19 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using App.Configuration;
 
-namespace App.Web.Controllers
+namespace App.Example.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/values")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        readonly ISomeService _service;
+        readonly IAnotherService _anotherService;
+        public ValuesController(
+            ISomeService service,
+            IAnotherService anotherService)
+        {
+            _service = service;
+            _anotherService = anotherService;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            _service.DoSmth();
+            _anotherService.DoAnything();
             return new string[] { "value1", "value2" };
         }
 

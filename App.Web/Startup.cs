@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Swashbuckle.AspNetCore;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace App.Web
 {
@@ -25,8 +17,9 @@ namespace App.Web
 
         public IConfiguration Configuration { get; }
 
+        // TODO add logging
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // ## ASP NET Core template code
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -34,11 +27,15 @@ namespace App.Web
 
             // ## Code added to the template
             ConfigureSwaggerServices(services);
+
+            var serviceProvider = GetServiceProvider(services);
+
+            return serviceProvider;
             // ##
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider provider)
         {
             // ## ASP NET Core template code
             if (env.IsDevelopment())
