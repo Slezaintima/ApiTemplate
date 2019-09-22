@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace App.Configuration
+﻿namespace App.Configuration
 {
-    // TODO add description
+    /// <summary>
+    /// Utility interface to register implementation as transient (one per request)
+    /// </summary>
     public interface ITransientDependency
     {
     }

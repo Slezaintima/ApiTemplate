@@ -7,7 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace App.Web
 {
-    // TODO write description
+    /// <summary>
+    /// Class, which configure the most important parts of ASP NET CORE infrastructure
+    /// Normally you should not modify nothing here
+    /// </summary>
     public partial class Startup
     {
         public Startup(IConfiguration configuration)
@@ -17,7 +20,6 @@ namespace App.Web
 
         public IConfiguration Configuration { get; }
 
-        // TODO add logging
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {

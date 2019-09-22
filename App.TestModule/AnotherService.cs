@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace App.Example
+﻿namespace App.Example
 {
     public interface IAnotherService
     {

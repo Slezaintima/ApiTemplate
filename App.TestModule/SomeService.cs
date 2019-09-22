@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using App.Configuration;
+﻿using App.Configuration;
 
 namespace App.Example
 {
@@ -9,11 +6,15 @@ namespace App.Example
     {
         void DoSmth();
     }
+
+    /// <summary>
+    /// This service is a demonstration of registering dependencies, using utility <see cref="ITransientDependency"/> interface
+    /// </summary>
     public class SomeService : ISomeService, ITransientDependency
     {
         public void DoSmth()
         {
-            // AZAZA, do nothing
+            // do nothing
         }
     }
 }

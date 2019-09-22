@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace App.Configuration
+﻿namespace App.Configuration
 {
-    // TODO description
+    /// <summary>
+    /// Utility interface to register implementation as singletone (one per application)
+    /// </summary>
     public interface ISingletoneDependency
     {
     }

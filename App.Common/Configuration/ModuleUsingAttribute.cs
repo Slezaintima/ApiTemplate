@@ -2,7 +2,9 @@
 
 namespace App.Configuration
 {
-    // TODO add description
+    /// <summary>
+    /// Describes that root module is using another module (passed through parameter)
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class ModuleUsingAttribute : Attribute
     {

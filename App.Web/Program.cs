@@ -4,6 +4,9 @@ using Microsoft.Extensions.Logging;
 
 namespace App.Web
 {
+    /// <summary>
+    /// Normally you should not modify nothing here
+    /// </summary>
     public class Program
     {
         public static void Main(string[] args)

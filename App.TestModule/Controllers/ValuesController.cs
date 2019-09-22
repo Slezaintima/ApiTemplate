@@ -4,10 +4,15 @@ using Microsoft.Extensions.Logging;
 
 namespace App.Example.Controllers
 {
-    [Route("api/values")]
+    /// <summary>
+    /// This is example controller
+    /// IMPORTANT the route to your won module should be 'api/{yourModuleName}' in order to avoid conflicts with other modules
+    /// </summary>
+    [Route("api/example/values")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        // depedencies will be automatically resolved with used DI system
         readonly ISomeService _service;
         readonly IAnotherService _anotherService;
         readonly ILogger<ValuesController> _logger;
@@ -21,39 +26,14 @@ namespace App.Example.Controllers
             _logger = logger;
         }
 
-        // GET api/values
+        // GET api/example/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             _service.DoSmth();
             _anotherService.DoAnything();
-            _logger.LogInformation("ZAZAZAZA");
+            _logger.LogInformation("NOTHING");
             return new string[] { "value1", "value2" };
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
