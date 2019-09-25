@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -16,14 +17,17 @@ namespace App.Example.Controllers
         readonly ISomeService _service;
         readonly IAnotherService _anotherService;
         readonly ILogger<ValuesController> _logger;
+        readonly IValuesManager _valuesManager;
         public ValuesController(
             ISomeService service,
             IAnotherService anotherService,
-            ILogger<ValuesController> logger)
+            ILogger<ValuesController> logger,
+            IValuesManager valuesManager)
         {
             _service = service;
             _anotherService = anotherService;
             _logger = logger;
+            _valuesManager = valuesManager;
         }
 
         // GET api/example/values
@@ -33,7 +37,8 @@ namespace App.Example.Controllers
             _service.DoSmth();
             _anotherService.DoAnything();
             _logger.LogInformation("NOTHING");
-            return new string[] { "value1", "value2" };
+            var serviceCallResult = _valuesManager.GetValues().ToList();
+            return serviceCallResult;
         }
     }
 }
