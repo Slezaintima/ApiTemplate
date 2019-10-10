@@ -32,7 +32,8 @@ namespace App.Customers.Controllers
                 return serviceCallResult;
             }
         }
-        [HttpGet]
+
+        [HttpGet("{id}")]
         public ActionResult<string> GetById( int id)
         {
             _logger.LogInformation("NOTHING");
