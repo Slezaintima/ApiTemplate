@@ -9,7 +9,7 @@ namespace App.Accounts
 	{
 		public void Initialize(IWindsorContainer container)
 		{
-		   //Register(Component.For<IAccountsManager>().ImplementedBy<AccountsManager>().LifestyleTransient());
+		   
 		}
 	}
 }
