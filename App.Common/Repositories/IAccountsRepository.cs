@@ -6,6 +6,8 @@ namespace App.Repositories
     public interface IAccountsRepository
     {
 		List<Account> GetListAccounts();
-		List<Account> Zamina(int nomer);
-    }
+		List<Account> BlockAccount(int nomer);
+		List<Account> UnBlockAccount(int nomer);
+
+	}
 }

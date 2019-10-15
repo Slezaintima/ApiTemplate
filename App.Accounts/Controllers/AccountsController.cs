@@ -7,18 +7,13 @@ using System.Text;
 
 namespace App.Accounts.Controllers
 {
-	[Route("api/example/accounts")]
+	[Route("api/accounts")]
 	[ApiController]
 	public class AccountsController : ControllerBase
 	{
-		// depedencies will be automatically resolved with used DI system
-		readonly ILogger<AccountsController> _logger;
 		readonly IAccountsManager _valuesManager;
-		public AccountsController(
-			ILogger<AccountsController> logger,
-			IAccountsManager valuesManager)
+		public AccountsController(IAccountsManager valuesManager)
 		{
-			_logger = logger;
 			_valuesManager = valuesManager;
 		}
 
@@ -26,16 +21,22 @@ namespace App.Accounts.Controllers
 		[HttpGet]
 		public ActionResult<List<Account>> Get()
 		{
-			_logger.LogInformation("NOTHING");
 			var serviceCallResult = _valuesManager.GetListAccounts();
 			return serviceCallResult;
 		}
+		[Route("/BlockAccount")]
 		[HttpPut]
-		public ActionResult<List<Account>> Put(int nomer)
+		public ActionResult<List<Account>> BlockAccount(int nomer)
 		{
-			_logger.LogInformation("Put");
-			var putCallResult = _valuesManager.Zamina(nomer);
-			return putCallResult;
+			var putCallResponse = _valuesManager.BlockAccount(nomer);
+			return putCallResponse;
+		}
+		[Route("/UnBlockAccount")]
+		[HttpPut]
+		public ActionResult<List<Account>> UnBlockAccount(int nomer)
+		{
+			var putCallResponse = _valuesManager.UnBlockAccount(nomer);
+			return putCallResponse;
 		}
 	}
 }

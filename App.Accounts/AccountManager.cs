@@ -9,7 +9,8 @@ namespace App.Accounts
 	public interface IAccountsManager
 	{
 		List<Account> GetListAccounts();
-		List<Account> Zamina(int nomer);
+		List<Account> UnBlockAccount(int nomer);
+		List<Account> BlockAccount(int nomer);
 	}
 	public class AccountsManager : IAccountsManager, ITransientDependency
 	{
@@ -24,9 +25,13 @@ namespace App.Accounts
 		{
 			return _repository.GetListAccounts();
 		}
-		public List<Account> Zamina(int nomer)
+		public List<Account> UnBlockAccount(int nomer)
 		{
-			return _repository.Zamina(nomer);
+			return _repository.UnBlockAccount(nomer);
+		}
+		public List<Account> BlockAccount(int nomer)
+		{
+			return _repository.BlockAccount(nomer);
 		}
 	}
 }
