@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Common", "App.Common\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Example", "App.TestModule\App.Example.csproj", "{25F59F96-D5C0-4036-8DF3-2A4568E48602}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Accounts", "App.Accounts\App.Accounts.csproj", "{241113A4-7609-4B28-8ECE-CEAF69E9ED9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Accounts", "App.Accounts\App.Accounts.csproj", "{241113A4-7609-4B28-8ECE-CEAF69E9ED9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
