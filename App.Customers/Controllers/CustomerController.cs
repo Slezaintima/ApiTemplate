@@ -4,6 +4,7 @@ using System.Text;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using App.Models;
 
 namespace App.Customers.Controllers
 {
@@ -11,19 +12,19 @@ namespace App.Customers.Controllers
     [ApiController]
     public class CustomerController:ControllerBase
     {
-        readonly ILogger<CustomerController> _logger;
+       
         readonly ICustomersManager _customersManager;
 
         public CustomerController(ILogger<CustomerController> logger,ICustomersManager customersManager)
         {
-            _logger = logger;
+           
             _customersManager = customersManager;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Customer>> Get()
         {
-           _logger.LogInformation("NOTHING");
+           
             if (_customersManager.GetCustomers() == null)
                 return NotFound();
             else
@@ -34,29 +35,29 @@ namespace App.Customers.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string> GetById( int id)
+        public ActionResult<Customer> GetById( int id)
         {
-            _logger.LogInformation("NOTHING");
+          
             var serviceCallResult = _customersManager.GetCustomer(id);
             return serviceCallResult;
         }
 
 
         [HttpPost]
-        public ActionResult Add(string customer)
+        public ActionResult Add(Customer customer)
         {
-            _logger.LogInformation("NOTHING");
+            
             _customersManager.Add(customer);
             return Ok();
         }
 
         [HttpPut]
-        public ActionResult Update(string oldCustomer, string newCustomer)
+        public ActionResult Update(Customer newCustomer)
         {
-            _logger.LogInformation("NOTHING");
-            if (_customersManager.Update(oldCustomer, newCustomer))
-                return Ok();
-            else return NotFound();
+
+            _customersManager.Update(newCustomer);
+            return Ok();
+            
         }
     }
 }

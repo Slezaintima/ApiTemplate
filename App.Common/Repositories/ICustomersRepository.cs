@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-
+using App.Models;
 namespace App.Repositories
 {
     public interface ICustomersRepository
     {
-        int Size { get; }
-        IEnumerable<string> GetCustomers();
-        string GetCustomer(int id);
-        void Add(string customers);
-        void Update(int i, string newCustomer);
+     
+        IEnumerable<Customer> GetCustomers();
+        Customer GetCustomer(int id);
+        void Add(Customer customers);
+        void Update(Customer newCustomer);
     }
 }
