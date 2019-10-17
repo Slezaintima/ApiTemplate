@@ -10,12 +10,12 @@ namespace App.Customers.Controllers
 {
     [Route("api/customers")]
     [ApiController]
-    public class CustomerController:ControllerBase
+    public class CustomersController:ControllerBase
     {
        
         readonly ICustomersManager _customersManager;
 
-        public CustomerController(ILogger<CustomerController> logger,ICustomersManager customersManager)
+        public CustomersController(ICustomersManager customersManager)
         {
            
             _customersManager = customersManager;
