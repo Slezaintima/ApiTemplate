@@ -6,5 +6,6 @@ namespace App.Repositories
     {
         List<Payment> Filtration(string Status);
         List<Payment> CreatePayment(int ID, string Status);
+        List<Payment> GetListPayments();
     }
 }

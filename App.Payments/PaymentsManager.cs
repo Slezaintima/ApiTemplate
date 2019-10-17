@@ -13,6 +13,7 @@ namespace App.Payments
     {
         List<Payment> Filtration(string Status);
         List<Payment> CreatePayment(int ID, string Status);
+        List<Payment> GetListPayments();
     }
 
     public class PaymentsManager: IPaymentsManager, ITransientDependency
@@ -33,6 +34,10 @@ namespace App.Payments
         public List<Payment> CreatePayment(int ID, string Status)
         {
             return _repository.CreatePayment(ID, Status);
+        }
+        public List<Payment> GetListPayments()
+        {
+            return _repository.GetListPayments();
         }
     }
 }

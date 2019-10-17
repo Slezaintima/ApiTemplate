@@ -12,18 +12,31 @@ namespace App.Payments.Controllers
     {
             // depedencies will be automatically resolved with used DI system
             readonly IPaymentsManager _paymentsManager;
-            public PaymentsController(
-                IPaymentsManager paymentsManager)
+            public PaymentsController(IPaymentsManager paymentsManager)
             {
             _paymentsManager = paymentsManager;
             }
 
             // GET api/example/values
-            [HttpGet]   
-            public ActionResult<List<Payment>> Get(string Status)
+            [HttpGet] 
+            [Route("/filtration")]
+            public ActionResult<List<Payment>> Filtration(string Status)
             {
                 var serviceCallResult = _paymentsManager.Filtration(Status);
                 return serviceCallResult;
             }
+        [HttpPost]
+        [Route("/createpayment")]
+        public ActionResult<List<Payment>> CreatePayment(int ID, string Status)
+        {
+            var serviceCallResult = _paymentsManager.CreatePayment(ID,Status);
+            return serviceCallResult;
         }
+        [HttpGet]
+        public ActionResult<List<Payment>> GetListPayments()
+        {
+            var serviceCallResult = _paymentsManager.GetListPayments();
+            return serviceCallResult;
+        }
+    }
     }
