@@ -9,7 +9,7 @@ using App.Goods.Repositories;
 
 namespace App.Goods
 {
-    public class Class1
+    public class Module
     {
         public void Initialize(IWindsorContainer container)
         {
