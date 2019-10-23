@@ -8,15 +8,14 @@ using App.Models;
 
 namespace App.Goods.Controllers
 {
-    [Route("api/customers")]
+    [Route("api/goods")]
     [ApiController]
     public class GoodController: ControllerBase
     {
         readonly IGoodsManager _goodsManager;
 
         public GoodController(IGoodsManager goodsManager)
-        {
-
+        { 
             _goodsManager = goodsManager;
         }
 
@@ -39,6 +38,13 @@ namespace App.Goods.Controllers
 
             var serviceCallResult = _goodsManager.GetGood(id);
             return serviceCallResult;
+        }
+
+        [HttpPost]
+        public ActionResult AddOrder(Order order)
+        {
+            _goodsManager.AddOrder(order);
+            return Ok();
         }
     }
 }
