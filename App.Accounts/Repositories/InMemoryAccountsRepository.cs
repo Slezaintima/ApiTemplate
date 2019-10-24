@@ -18,31 +18,23 @@ namespace App.Accounts.Repositories
 		{
 			return account;
 		}
-		public List<Account> BlockAccount(int nomer)
+		public void BlockAccount(int number)
 		{
-			var item = account.Find(x => x.Nomer == nomer);
-			if (item.IsBlocking == true)
+			var item = account.Find(x => x.Number == number);
+			if (item.IsBlocked)
 			{
 				throw new Exception("You cannot block an already blocked account");
 			}
-			else
-			{
-				item.IsBlocking = true;
-			}
-			return account;
+		    item.IsBlocked = true;
 		}
-		public List<Account> UnBlockAccount(int nomer)
+		public void UnBlockAccount(int number)
 		{
-			var item = account.Find(x => x.Nomer == nomer);
-			if (item.IsBlocking == false)
+			var item = account.Find(x => x.Number == number);
+			if (!item.IsBlocked)
 			{
 				throw new Exception("You cannot Unblock an already Unblocked account");
 			}
-			else
-			{
-				item.IsBlocking = false;
-			}
-			return account;
+			item.IsBlocked = false;
 		}
 
 	}

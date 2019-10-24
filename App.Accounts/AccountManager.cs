@@ -9,8 +9,8 @@ namespace App.Accounts
 	public interface IAccountsManager
 	{
 		List<Account> GetListAccounts();
-		List<Account> UnBlockAccount(int nomer);
-		List<Account> BlockAccount(int nomer);
+		void UnBlockAccount(int number);
+		void BlockAccount(int number);
 	}
 	public class AccountsManager : IAccountsManager, ITransientDependency
 	{
@@ -25,13 +25,13 @@ namespace App.Accounts
 		{
 			return _repository.GetListAccounts();
 		}
-		public List<Account> UnBlockAccount(int nomer)
+		public void UnBlockAccount(int number)
 		{
-			return _repository.UnBlockAccount(nomer);
+
 		}
-		public List<Account> BlockAccount(int nomer)
+		public void BlockAccount(int number)
 		{
-			return _repository.BlockAccount(nomer);
+
 		}
 	}
 }

@@ -26,17 +26,15 @@ namespace App.Accounts.Controllers
 		}
 		[Route("/BlockAccount")]
 		[HttpPut]
-		public ActionResult<List<Account>> BlockAccount(int nomer)
+		public void BlockAccount(int number)
 		{
-			var putCallResponse = _accountsManager.BlockAccount(nomer);
-			return putCallResponse;
+			_accountsManager.BlockAccount(number);
 		}
 		[Route("/UnBlockAccount")]
 		[HttpPut]
-		public ActionResult<List<Account>> UnBlockAccount(int nomer)
+		public void UnBlockAccount(int number)
 		{
-			var putCallResponse = _accountsManager.UnBlockAccount(nomer);
-			return putCallResponse;
+			_accountsManager.UnBlockAccount(number);
 		}
 	}
 }
