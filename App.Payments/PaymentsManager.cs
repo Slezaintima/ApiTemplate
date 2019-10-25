@@ -1,4 +1,5 @@
 ﻿using App.Configuration;
+using App.Models;
 using App.Repositories;
 using System;
 using System.Collections.Generic;
