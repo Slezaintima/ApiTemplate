@@ -10,26 +10,24 @@ namespace App.Payments.Controllers
     [ApiController]
     public class PaymentsController : ControllerBase
     {
-            // depedencies will be automatically resolved with used DI system
             readonly IPaymentsManager _paymentsManager;
             public PaymentsController(IPaymentsManager paymentsManager)
             {
             _paymentsManager = paymentsManager;
             }
 
-            // GET api/example/values
             [HttpGet] 
-            [Route("/filtration")]
-            public ActionResult<List<Payment>> Filtration(string Status)
-            {
-                var serviceCallResult = _paymentsManager.Filtration(Status);
-                return serviceCallResult;
-            }
+            [Route("/getpbystat")]
+        public IEnumerable<Payment> GetPaymentsByStatus(string Status)
+        {
+            var serviceCallResult = _paymentsManager.GetPaymentsByStatus(Status);
+            return serviceCallResult;
+        }
         [HttpPost]
         [Route("/createpayment")]
-        public ActionResult<List<Payment>> CreatePayment(int ID, string Status)
+        public ActionResult<List<Payment>> CreatePayment(int p_number, string Status)
         {
-            var serviceCallResult = _paymentsManager.CreatePayment(ID,Status);
+            var serviceCallResult = _paymentsManager.CreatePayment(p_number, Status);
             return serviceCallResult;
         }
         [HttpGet]
@@ -39,4 +37,4 @@ namespace App.Payments.Controllers
             return serviceCallResult;
         }
     }
-    }
+}

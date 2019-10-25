@@ -4,8 +4,8 @@ namespace App.Repositories
 {
     public interface IPaymentsRepository
     {
-        List<Payment> Filtration(string Status);
-        List<Payment> CreatePayment(int ID, string Status);
+        IEnumerable<Payment> GetPaymentsByStatus(string Status);
+        List<Payment> CreatePayment(int p_number, string Status);
         List<Payment> GetListPayments();
     }
 }

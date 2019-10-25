@@ -10,7 +10,6 @@ namespace App.Payments
     {
         public void Initialize(IWindsorContainer container)
         {
-
         }
     }
 }

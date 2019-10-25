@@ -6,34 +6,27 @@ using System.Text;
 
 namespace App.Payments
 {
-    /// <summary>
-    /// Example manager class. Which should process business logic, and call required repository
-    /// </summary>
     public interface IPaymentsManager
     {
-        List<Payment> Filtration(string Status);
-        List<Payment> CreatePayment(int ID, string Status);
+        IEnumerable<Payment> GetPaymentsByStatus(string Status);
+        List<Payment> CreatePayment(int p_number, string Status);
         List<Payment> GetListPayments();
     }
-
     public class PaymentsManager: IPaymentsManager, ITransientDependency
     {
-        // propoerty should be readonly, so it could not be changed after initialization
-        readonly IPaymentsRepository _repository;
-        // resolving repository through constructor dependency
+        
+        readonly IPaymentsRepository _repository;    
         public PaymentsManager(IPaymentsRepository repository)
         {
             _repository = repository;
         }
-
-        public List<Payment> Filtration(string Status)
+        public IEnumerable<Payment> GetPaymentsByStatus(string Status)
         {
-            return _repository.Filtration(Status);
-        }      
-
-        public List<Payment> CreatePayment(int ID, string Status)
+            return _repository.GetPaymentsByStatus(Status);
+        }
+        public List<Payment> CreatePayment(int p_number, string Status)
         {
-            return _repository.CreatePayment(ID, Status);
+            return _repository.CreatePayment(p_number, Status);
         }
         public List<Payment> GetListPayments()
         {

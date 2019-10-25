@@ -2,6 +2,7 @@
 using App.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace App.Payments.Repositoriy
@@ -14,21 +15,13 @@ namespace App.Payments.Repositoriy
             new Payment(002,"Success"),
             new Payment(003,"Success")
         };
-        public List<Payment> Filtration(string Status)
+        public IEnumerable<Payment> GetPaymentsByStatus(string Status)
         {
-            List<Payment> FiltrPayments = new List<Payment>();
-            for(int i=1; i<payments.Count; i++)
-            {
-                if (payments[i].Status == Status)
-                {
-                    FiltrPayments.Add(payments[i]);
-                }
-            }
-            return FiltrPayments;
+           return payments.Where(p => p.Status == Status);
         }
-        public List<Payment> CreatePayment(int ID, string Status)
+        public List<Payment> CreatePayment(int p_number, string Status)
         {
-            payments.Add(new Payment(ID, Status));
+            payments.Add(new Payment(p_number, Status));
             return payments;
         }
         public List<Payment> GetListPayments()

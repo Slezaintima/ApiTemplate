@@ -6,13 +6,13 @@ namespace App
 {
     public class Payment
     {
-        public Payment(int iD, string status)
+        public Payment(int PaymentNumber, string status)
         {
-            ID = iD;
+            p_number = PaymentNumber;
             Status = status;
         }
 
-        public int ID { get; set; }
+        public int p_number { get; set; }
         public string Status { get; set; }
     }
 }
