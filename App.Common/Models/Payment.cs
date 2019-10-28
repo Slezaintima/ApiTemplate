@@ -6,13 +6,13 @@ namespace App.Models
 {
     public class Payment
     {
-        public Payment(int PaymentNumber, string status)
+        public Payment(int PNumber, string status)
         {
-            p_number = PaymentNumber;
+            PaymentNumber = PNumber;
             Status = status;
         }
 
-        public int p_number { get; set; }
+        public int PaymentNumber { get; set; }
         public string Status { get; set; }
     }
 }

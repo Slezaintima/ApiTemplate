@@ -20,9 +20,9 @@ namespace App.Payments.Repositoriy
         {
            return payments.Where(p => p.Status == Status);
         }
-        public List<Payment> CreatePayment(int p_number, string Status)
+        public List<Payment> CreatePayment(int PaymentNumber, string Status)
         {
-            payments.Add(new Payment(p_number, Status));
+            payments.Add(new Payment(PaymentNumber, Status));
             return payments;
         }
         public List<Payment> GetListPayments()

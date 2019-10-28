@@ -26,9 +26,9 @@ namespace App.Payments.Controllers
         }
         [HttpPost]
         [Route("/createpayment")]
-        public ActionResult<List<Payment>> CreatePayment(int p_number, string Status)
+        public ActionResult<List<Payment>> CreatePayment(int PaymentNumber, string Status)
         {
-            var serviceCallResult = _paymentsManager.CreatePayment(p_number, Status);
+            var serviceCallResult = _paymentsManager.CreatePayment(PaymentNumber, Status);
             return serviceCallResult;
         }
         [HttpGet]
