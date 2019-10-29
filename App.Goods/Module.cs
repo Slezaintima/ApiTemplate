@@ -17,6 +17,9 @@ namespace App.Goods
             container.Register(Component.For<IGoodsManager>().ImplementedBy<GoodsManager>().LifestyleTransient());
             container.Register(Component.For<IGodsRepository>().
                 ImplementedBy<GoodsRepository>().LifestyleTransient());
+            container.Register(Component.For<IOrderManager>().ImplementedBy<OrderManager>().LifestyleTransient());
+            container.Register(Component.For<IOrderRepository>().
+                ImplementedBy<OrderRepository>().LifestyleTransient());
         }
     }
 }
