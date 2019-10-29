@@ -24,25 +24,24 @@ namespace App.Goods.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Good>> Get()
         {
-
-            if (_goodsManager.GetGoods() == null)
-                return NotFound();
-            else
-            {
-                var serviceCallResult = _goodsManager.GetGoods().ToList();
-                return serviceCallResult;
-            }
+             var serviceCallResult = _goodsManager.GetGoods().ToList();
+             return serviceCallResult;   
         }
 
         [HttpGet("{id}")]
         public ActionResult<Good> GetById(int id)
         {
-
-            var serviceCallResult = _goodsManager.GetGood(id);
-            return serviceCallResult;
+            if (_goodsManager.GetGoods() == null)
+                return NotFound();
+            else
+            {
+                var serviceCallResult = _goodsManager.GetGood(id);
+                return serviceCallResult;
+            }
         }
 
         [HttpPost]
+        [Route("createOrder")]
         public ActionResult AddOrder(Order order)
         {
             _orderManager.AddOrder(order);
