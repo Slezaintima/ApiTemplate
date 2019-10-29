@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using App.Configuration;
 using App.Models;
 using App.Repositories;
 
 namespace App.Goods.Repositories
 {
-    public class GoodsRepository : IGodsRepository
+    public class GoodsRepository : IGodsRepository, ITransientDependency
     {
         static List<Good> goodsList;
         List<Order> orders = new List<Order>();

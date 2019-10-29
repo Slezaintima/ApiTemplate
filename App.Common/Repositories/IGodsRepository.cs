@@ -7,6 +7,6 @@ namespace App.Repositories
     {
         IEnumerable<Good> GetGoods();
         Good GetGood(int id);
-        void CreateOrder(Order order);
+        
     }
 }

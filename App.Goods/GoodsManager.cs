@@ -1,4 +1,5 @@
-﻿using App.Models;
+﻿using App.Configuration;
+using App.Models;
 using App.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace App.Goods
         Good GetGood(int id);
         void AddOrder(Order order);
     }
-    public class GoodsManager:IGoodsManager
+    public class GoodsManager:IGoodsManager, ITransientDependency
     {
         readonly IGodsRepository _repository;
         public GoodsManager(IGodsRepository repository)
