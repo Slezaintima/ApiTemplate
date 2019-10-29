@@ -10,7 +10,7 @@ namespace App.Goods.Repositories
     public class GoodsRepository : IGodsRepository, ITransientDependency
     {
         static List<Good> goodsList;
-        List<Order> orders = new List<Order>();
+       
         static GoodsRepository()
         {
             goodsList = new List<Good> { new Good { Id = 1,Name = "Kaptsi", Price = 20 },
@@ -22,10 +22,6 @@ namespace App.Goods.Repositories
             return goodsList;
         }
 
-        public void CreateOrder(Order order)
-        {
-            orders.Add(order);
-        }
         public Good GetGood(int id)
         {
             return goodsList[id];
