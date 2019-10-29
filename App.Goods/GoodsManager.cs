@@ -11,7 +11,6 @@ namespace App.Goods
     { 
         IEnumerable<Good> GetGoods();
         Good GetGood(int id);
-        void AddOrder(Order order);
     }
     public class GoodsManager:IGoodsManager, ITransientDependency
     {
@@ -29,11 +28,6 @@ namespace App.Goods
         public Good GetGood(int id)
         {
             return _repository.GetGood(id);
-        }
-
-        public void AddOrder(Order order)
-        {
-            _repository.CreateOrder(order);
         }
 
     }
