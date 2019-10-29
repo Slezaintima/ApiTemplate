@@ -13,10 +13,12 @@ namespace App.Goods.Controllers
     public class GoodController: ControllerBase
     {
         readonly IGoodsManager _goodsManager;
+        readonly IOrderManager _orderManager;
 
-        public GoodController(IGoodsManager goodsManager)
+        public GoodController(IGoodsManager goodsManager, IOrderManager orderManager)
         { 
             _goodsManager = goodsManager;
+            _orderManager = orderManager;
         }
 
         [HttpGet]
@@ -43,7 +45,7 @@ namespace App.Goods.Controllers
         [HttpPost]
         public ActionResult AddOrder(Order order)
         {
-            _goodsManager.AddOrder(order);
+            _orderManager.AddOrder(order);
             return Ok();
         }
     }
