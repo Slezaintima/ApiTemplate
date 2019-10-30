@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using App.Accounts.Filters;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,14 @@ namespace App.Accounts.Controllers
 {
 	[Route("api/accounts")]
 	[ApiController]
+	[TypeFilter(typeof(AccountsExceptionFilter), Arguments = new object[] { nameof(AccountsController) })]
 	public class AccountsController : ControllerBase
 	{
+		readonly ILogger<AccountsController> _logger;
 		readonly IAccountsManager _accountsManager;
-		public AccountsController(IAccountsManager accountsManager)
+		public AccountsController(ILogger<AccountsController> logger, IAccountsManager accountsManager)
 		{
+			_logger = logger;
 			_accountsManager = accountsManager;
 		}
 
@@ -21,6 +25,7 @@ namespace App.Accounts.Controllers
 		[HttpGet]
 		public ActionResult<List<Account>> Get()
 		{
+			_logger.LogDebug("Call Get method");
 			var serviceCallResult = _accountsManager.GetListAccounts();
 			return serviceCallResult;
 		}
@@ -28,12 +33,14 @@ namespace App.Accounts.Controllers
 		[HttpPut]
 		public void BlockAccount(int number)
 		{
+			_logger.LogDebug("Call method for block account");
 			_accountsManager.BlockAccount(number);
 		}
 		[Route("/UnBlockAccount")]
 		[HttpPut]
 		public void UnBlockAccount(int number)
 		{
+			_logger.LogDebug("Call method for unblock account");
 			_accountsManager.UnBlockAccount(number);
 		}
 	}
