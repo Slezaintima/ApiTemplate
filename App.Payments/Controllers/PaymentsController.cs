@@ -27,7 +27,7 @@ namespace App.Payments.Controllers
             [Route("/getpbystat")]
         public IEnumerable<Payment> GetPaymentsByStatus(string Status)
         {
-            _logger.LogDebug("Call method for filtration payments");
+            _logger.LogInformation("Call method for filtration payments");
             var serviceCallResult = _paymentsManager.GetPaymentsByStatus(Status);
             return serviceCallResult;
         }

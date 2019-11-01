@@ -19,35 +19,36 @@ namespace App.Payments.Repository
         };
         public IEnumerable<Payment> GetPaymentsByStatus(string Status)
         {
+            if (Status == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             if (Status != "InProcesing" && Status != "Success")
             {
                 throw new InvalidStatusException("This status is not right! Please, try again.");
             }
 
-            if (Status == null)
-            {
-                throw new ArgumentNullException();
-            }
             return payments.Where(p => p.Status == Status);
         }
         public List<Payment> CreatePayment(int PaymentNumber, string Status)
         {
+            if (Status == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (Status != "InProcesing" && Status != "Success")
+            {
+                throw new InvalidStatusException("This status is not right! Please, try again.");
+            }
+
             for (int i = 0; i < payments.Count; i++)
             {
                 if (PaymentNumber == payments[i].PaymentNumber)
                 {
                     throw new NumberAlreadyExists("This payment number is already exists!");
                 }
-            }
-
-            if (Status != "InProcesing" && Status != "Success")
-            {
-                throw new InvalidStatusException("This status is not right! Please, try again.");
-            }
-
-            if (Status == null)
-            {
-                throw new ArgumentNullException();
             }
 
             payments.Add(new Payment(PaymentNumber, Status));
@@ -57,7 +58,7 @@ namespace App.Payments.Repository
         {
             if (payments==null)
             {
-                throw new ArgumentNullException();
+                throw new EmptyList("List is empty!");
             }
 
             return payments;
