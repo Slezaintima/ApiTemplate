@@ -25,9 +25,9 @@ namespace App.Payments
         {
             return _repository.GetPaymentsByStatus(Status);
         }
-        public List<Payment> CreatePayment(int p_number, string Status)
+        public List<Payment> CreatePayment(int PaymentNumber, string Status)
         {
-            return _repository.CreatePayment(p_number, Status);
+            return _repository.CreatePayment(PaymentNumber, Status);
         }
         public List<Payment> GetListPayments()
         {
