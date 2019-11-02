@@ -8,6 +8,7 @@ namespace App.Web
     [ModuleUsing(typeof(Example.ExampleModule))]  // < ---- Example of module registration
 	  [ModuleUsing(typeof(Accounts.AccountModule))]
     [ModuleUsing(typeof(Customers.Module))]
+    [ModuleUsing(typeof(Goods.Module))]
     [ModuleUsing(typeof(Payments.PaymentsModule))]
     public class Modules
     {
