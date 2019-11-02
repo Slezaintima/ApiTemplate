@@ -45,7 +45,7 @@ namespace App.Accounts.Filters
 					}
 				default:
 					{
-						context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+						context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError; 
 						await context.HttpContext.Response.WriteAsync("Unhandled exception ! Please, contact support for resolve");
 						break;
 					}

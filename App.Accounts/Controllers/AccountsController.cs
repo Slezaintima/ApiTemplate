@@ -25,7 +25,7 @@ namespace App.Accounts.Controllers
 		[HttpGet]
 		public ActionResult<List<Account>> Get()
 		{
-			_logger.LogDebug("Call Get method");
+			_logger.LogInformation("Call Get method");
 			var serviceCallResult = _accountsManager.GetListAccounts();
 			return serviceCallResult;
 		}
@@ -33,14 +33,14 @@ namespace App.Accounts.Controllers
 		[HttpPut]
 		public void BlockAccount(int number)
 		{
-			_logger.LogDebug("Call method for block account");
+			_logger.LogInformation("Call method for block account");
 			_accountsManager.BlockAccount(number);
 		}
 		[Route("/UnBlockAccount")]
 		[HttpPut]
 		public void UnBlockAccount(int number)
 		{
-			_logger.LogDebug("Call method for unblock account");
+			_logger.LogInformation("Call method for unblock account");
 			_accountsManager.UnBlockAccount(number);
 		}
 	}

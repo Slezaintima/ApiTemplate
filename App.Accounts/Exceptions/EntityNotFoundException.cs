@@ -2,7 +2,7 @@
 
 namespace App.Accounts.Exceptions
 {
-    public class EntityNotFoundException : Exception
+    public class EntityNotFoundException : SystemException
     {
         public Type EntityType { get; private set; }
         public EntityNotFoundException(Type entityType)

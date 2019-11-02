@@ -45,7 +45,7 @@ namespace App.Accounts.Repositories
 			}
 			if (!item.IsBlocked)
 			{
-				throw new Exception("You cannot Unblock an already Unblocked account");
+				throw new AccountAlreadyUnblockedException("You cannot Unblock an already Unblocked account");
 			}
 			item.IsBlocked = false;
 		}
