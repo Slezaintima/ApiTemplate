@@ -27,11 +27,11 @@ namespace App.Accounts
 		}
 		public void UnBlockAccount(int number)
 		{
-
+			_repository.UnBlockAccount(number);
 		}
 		public void BlockAccount(int number)
 		{
-
+			_repository.BlockAccount(number);
 		}
 	}
 }
