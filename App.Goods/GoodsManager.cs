@@ -4,6 +4,8 @@ using App.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using App.Goods.Exceptions;
 
 namespace App.Goods
 {
@@ -27,6 +29,8 @@ namespace App.Goods
 
         public Good GetGood(int id)
         {
+            if (_repository.GetGoods().Where(obj => obj.Id == id) != null)
+                throw new GoodNotFoundException(typeof(Good));
             return _repository.GetGood(id);
         }
 
