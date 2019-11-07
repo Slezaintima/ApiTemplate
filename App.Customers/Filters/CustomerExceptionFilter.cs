@@ -27,7 +27,7 @@ namespace App.Customers.Filters
                 case CustomerNotFoundException customerNotFound:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                        await context.HttpContext.Response.WriteAsync($"Not Found: {customerNotFound.Customer.GetType().AssemblyQualifiedName}");
+                        await context.HttpContext.Response.WriteAsync($"Not Found: {customerNotFound.EntityType.AssemblyQualifiedName}");
                         break;
                     }
                 case CustomerCollisionException customerCollision:
