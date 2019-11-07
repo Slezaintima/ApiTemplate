@@ -42,7 +42,7 @@ namespace App.Customers
 
         public void Add(Customer customer)
         {
-            if (_repository.GetCustomers().Where(obj => obj.Id == customer.Id) != null)
+            if (_repository.GetCustomers().Where(obj => obj.Id == customer.Id).FirstOrDefault() != null)
                 throw new CustomerCollisionException("Id Collision of Customers");
             _repository.Add(customer);
         }
