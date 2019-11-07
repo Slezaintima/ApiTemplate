@@ -25,7 +25,7 @@ namespace App.Customers.Controllers
         [HttpGet]
         public IEnumerable<Customer> Get()
         {
-            _logger.LogDebug("call Get method");
+            _logger.LogInformation("call Get method");
             var serviceCallResult = _customersManager.GetCustomers().ToList();
             return serviceCallResult;
         }
@@ -33,7 +33,7 @@ namespace App.Customers.Controllers
         [HttpGet("{id}")]
         public Customer GetById( int id)
         {
-            _logger.LogDebug("call GetById method");
+            _logger.LogInformation("call GetById method");
             var serviceCallResult = _customersManager.GetCustomer(id);
             return serviceCallResult;
         }
@@ -42,14 +42,14 @@ namespace App.Customers.Controllers
         [HttpPost]
         public void Add(Customer customer)
         {
-            _logger.LogDebug("call Add method");
+            _logger.LogInformation("call Add method");
             _customersManager.Add(customer);
         }
 
         [HttpPut]
         public void Update(Customer newCustomer)
         {
-            _logger.LogDebug("call Update method");
+            _logger.LogInformation("call Update method");
             _customersManager.Update(newCustomer);
         }
     }
