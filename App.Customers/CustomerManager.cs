@@ -36,7 +36,7 @@ namespace App.Customers
             
             var result = _repository.GetCustomer(id);
             if (result == null)
-                throw new CustomerNotFoundException(result);
+                throw new CustomerNotFoundException(typeof(Customer));
             return result;
         }
 
