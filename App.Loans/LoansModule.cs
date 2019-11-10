@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using App.Configuration;
+using Castle.MicroKernel.Registration;
+using Castle.Windsor;
+
 
 namespace App.Loans
 {
-    class LoansModule
+    public class LoansModule : IModule
     {
+        public void Initialize(IWindsorContainer container)
+        {
+
+        }
     }
 }
