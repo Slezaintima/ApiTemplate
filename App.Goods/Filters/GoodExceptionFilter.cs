@@ -14,9 +14,10 @@ namespace App.Goods.Filters
     {
         readonly string _context;
         readonly ILogger<GoodExceptionFilter> _logger;
-        public GoodExceptionFilter(ILogger<GoodExceptionFilter> logger)
+        public GoodExceptionFilter(ILogger<GoodExceptionFilter> logger, string context)
         {
             _logger = logger;
+            _context = context;
         }
 
          public async Task OnExceptionAsync(ExceptionContext context)

@@ -26,7 +26,7 @@ namespace App.Goods.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Good> Get()
+        public ActionResult<IEnumerable<Good>> Get()
         {
             _logger.LogInformation("Call Get goods method");
              var serviceCallResult = _goodsManager.GetGoods().ToList();
