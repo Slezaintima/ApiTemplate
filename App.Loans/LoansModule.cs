@@ -7,9 +7,6 @@ namespace App.Loans
 {
     public class LoansModule : IModule
     {
-        public void Initialize(IWindsorContainer container)
-        {
-
-        }
+        public void Initialize(IWindsorContainer container) { }
     }
 }

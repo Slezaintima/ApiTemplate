@@ -23,7 +23,7 @@ namespace App.Loans.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string> GetMoneyLeftByIdLoan(int id)
+        public ActionResult<string> GetLeftMoneyByIdLoan(int id)
         {
             var serviceCallResult = _valuesManager.GetMoneyLeft(id).ToString();
             return serviceCallResult;

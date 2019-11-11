@@ -11,20 +11,10 @@ namespace App.Loans.Services
 
         public Loan GetItem(int id) => _repository.GetLoanById(id);
 
-        public LoansManager(ILoansRepository repository)
-        {
-            _repository = repository;
-        }
+        public LoansManager(ILoansRepository repository) =>  _repository = repository;
 
-        public double GetMoneyLeft(int id)
-        {
-            return _repository.GetLoanById(id).moneyLeft;
-        }
+        public double GetMoneyLeft(int id) => _repository.GetLoanById(id).moneyLeft;
 
-        public IEnumerable<string> GetListActiveLoans()
-        {
-            return _repository.GetActiveLoansList();
-        }
-
+        public IEnumerable<string> GetListActiveLoans() => _repository.GetActiveLoansList();
     }
 }

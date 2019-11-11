@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace App.Loans.Models
+﻿namespace App.Loans.Models
 {
     public class Loan
     {
-        private double money;//денежки
-        public int time { get; set; }//кол-во платежей (ежемесячных)
-        public double moneyTaked { get; set; }//скок взял
-        public double moneyBack { get; set; }//скок вернул
-        public double moneyLeft { get { return money; } }//скок осталось вернуть 
-        public double percent { get; set; }//процентная ставка/годовых
+        private readonly double money;
+        public int time { get; set; }
+        public double moneyTaked { get; set; }
+        public double moneyBack { get; set; }
+        public double moneyLeft { get { return money; } }
+        public double percent { get; set; }
+
         public Loan(double moneyTake, double percent, int time)
         {
             this.time = time;
@@ -25,10 +22,6 @@ namespace App.Loans.Models
             if (money >= moneyLeft / time)
                 moneyBack += money;
         }
-
-        public override string ToString()
-        {
-            return "Money taked: " + moneyTaked + "for time: " + time + "month by " + percent + " percent";
-        }
+        public override string ToString() => "Money taked: " + moneyTaked + "for time: " + time + "month by " + percent + " percent";
     }
 }
