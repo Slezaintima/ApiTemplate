@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using App.Loans.Models;
 
 namespace App.Loans.Interfaces
 {
-    interface ILoansRepository
+    public interface ILoansRepository
     {
+        IEnumerable<string> GetActiveLoansList();
+
+        Loan GetLoanById(int id);
     }
 }
