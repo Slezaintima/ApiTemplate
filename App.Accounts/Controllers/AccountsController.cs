@@ -23,11 +23,11 @@ namespace App.Accounts.Controllers
 
 		// GET api/example/values
 		[HttpGet]
-		public ActionResult<List<Account>> Get()
+		public ActionResult<IEnumerable<Account>> Get()
 		{
 			_logger.LogInformation("Call Get method");
 			var serviceCallResult = _accountsManager.GetListAccounts();
-			return serviceCallResult;
+			return serviceCallResult.ToList();
 		}
 		[Route("/BlockAccount")]
 		[HttpPut]

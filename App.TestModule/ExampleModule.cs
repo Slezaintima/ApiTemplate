@@ -4,14 +4,13 @@ using App.Example.Services;
 using App.Models.Example;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using Microsoft.EntityFrameworkCore;
 
 namespace App.Example
 {
-    /// <summary>
-    /// Endpoint class for registering the module in the system. This class should be referenced in the main module directly
-    /// </summary>
-    public class ExampleModule : IModule
+	/// <summary>
+	/// Endpoint class for registering the module in the system. This class should be referenced in the main module directly
+	/// </summary>
+	public class ExampleModule : IModule
     {
         /// <summary>
         /// This method initialize additional module dependencies, if it is not possible to use utility interfaces
