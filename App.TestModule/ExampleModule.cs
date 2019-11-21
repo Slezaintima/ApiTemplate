@@ -4,6 +4,7 @@ using App.Example.Services;
 using App.Models.Example;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Microsoft.EntityFrameworkCore;
 //using Microsoft.EntityFrameworkCore;
 
 namespace App.Example
