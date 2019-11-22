@@ -13,7 +13,7 @@ namespace App.Example.Filters
     /// Example of async exception filter.
     /// The purpose of this class -> catch unhandeled exceptions and wrap sensitive data into common form
     /// </summary>
-    public class ExampleAsyncExceptionFilter : IAsyncExceptionFilter//, ITransientDependency
+    public class ExampleAsyncExceptionFilter : IAsyncExceptionFilter, ITransientDependency
     {
         readonly ILogger<ExampleAsyncExceptionFilter> _logger;
         readonly ILocalizationManager _localizationManager;
