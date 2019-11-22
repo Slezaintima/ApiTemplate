@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Reflection;
 using App.Configuration;
+using App.Example.Filters;
 using Castle.Facilities.AspNetCore;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace App.Web
@@ -18,11 +20,17 @@ namespace App.Web
         {
             var container = Container;
 
+            Container.AddFacility<AspNetCoreFacility>(f => f.CrossWiresInto(services));
+
             RegisterComponents(container);
 
             InitializeModules(container);
 
+            Container.Register(Component.For<ExampleAsyncExceptionFilter>().ImplementedBy<ExampleAsyncExceptionFilter>().LifestyleTransient().CrossWired());
+
             var windsorServiceProvider = services.AddWindsor(container);
+
+            var filter = Container.Resolve<ExampleAsyncExceptionFilter>();
 
             return windsorServiceProvider;
         }
