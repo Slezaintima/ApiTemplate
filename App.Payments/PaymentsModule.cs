@@ -23,7 +23,6 @@ namespace App.Payments
             container.Register(Component.For<DbContextOptions<PaymentsDbContext>>().UsingFactoryMethod(() =>
             {
                 var builder = new DbContextOptionsBuilder<PaymentsDbContext>();
-                // for test purpose we are using InMemory database
                 builder.UseInMemoryDatabase("PaymentsDb");
                 return builder.Options;
             }).LifestyleTransient());
@@ -35,18 +34,14 @@ namespace App.Payments
 
         private void InitializeDbContext(IWindsorContainer container)
         {
-            // DbContext object is Disposable, so it is needed to use "using" constraction
             using (var context = container.Resolve<PaymentsDbContext>())
-            {
-                // add values to the context (without saving)
+            { 
                 context.payment.AddRange(new[]
                 {
                     new Payment(001,"InProcesing"),
                     new Payment(002,"Success"),
                     new Payment(003,"Success")
                 });
-
-                // save changes in the context
                 context.SaveChanges();
             }
         }
