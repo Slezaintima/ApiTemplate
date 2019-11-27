@@ -8,6 +8,10 @@ namespace App.Accounts
 {
 	public class AccountModule : IModule
 	{
+		public void Initialize(IWindsorContainer container)
+		{
+			RegisterDbContext(container);
+		}
 		private void RegisterDbContext(IWindsorContainer container)
 		{
 			container.Register(Component.For<DbContextOptions<AccountDbContext>>().UsingFactoryMethod(() =>
@@ -37,10 +41,6 @@ namespace App.Accounts
 				// save changes in the context
 				context.SaveChanges();
 			}
-		}
-		public void Initialize(IWindsorContainer container)
-		{
-			RegisterDbContext(container);
 		}
 	}
 }

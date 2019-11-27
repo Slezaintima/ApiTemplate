@@ -23,7 +23,7 @@ namespace App.Accounts.Controllers
 
 		// GET api/example/values
 		[HttpGet]
-		public ActionResult<IEnumerable<Account>> Get()
+		public List<Account> Get()
 		{
 			_logger.LogInformation("Call Get method");
 			var serviceCallResult = _accountsManager.GetListAccounts();

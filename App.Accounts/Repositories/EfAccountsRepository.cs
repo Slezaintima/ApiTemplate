@@ -20,6 +20,7 @@ namespace App.Accounts.Repositories
 		{
 			var account = _dbContext.Accounts.Where(a => a.Number == number).FirstOrDefault();
 			account.IsBlocked = true;
+			_dbContext.SaveChanges();
 		}
 
 		public List<Account> GetListAccounts()
@@ -31,6 +32,7 @@ namespace App.Accounts.Repositories
 		{
 			var account = _dbContext.Accounts.Where(a => a.Number == number).FirstOrDefault();
 			account.IsBlocked = false;
+			_dbContext.SaveChanges();
 		}
 		public void Dispose()
 		{
