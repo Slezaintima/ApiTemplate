@@ -38,9 +38,9 @@ namespace App.Payments
             { 
                 context.payment.AddRange(new[]
                 {
-                    new Payment(001,"InProcesing"),
-                    new Payment(002,"Success"),
-                    new Payment(003,"Success")
+                    new Payment(1,"InProcesing"),
+                    new Payment(2,"Success"),
+                    new Payment(3,"Success")
                 });
                 context.SaveChanges();
             }
