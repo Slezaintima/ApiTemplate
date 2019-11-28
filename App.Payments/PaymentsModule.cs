@@ -12,7 +12,6 @@ namespace App.Payments
 {
     public class PaymentsModule : IModule
     {
-        /// <param name="container"></param>
         public void Initialize(IWindsorContainer container)
         {
             RegisterDbContext(container);

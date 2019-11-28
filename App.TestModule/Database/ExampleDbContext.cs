@@ -1,6 +1,5 @@
 using App.Models.Example;
 using Microsoft.EntityFrameworkCore;
-//using Microsoft.EntityFrameworkCore;
 
 namespace App.Example.Database
 {

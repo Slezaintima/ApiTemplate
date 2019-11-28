@@ -14,8 +14,4 @@
     <ProjectReference Include="..\App.Common\App.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dto\" />
-  </ItemGroup>
-
 </Project>
