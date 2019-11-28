@@ -20,7 +20,9 @@ namespace App.Payments.Repository
         public List<Payment> CreatePayment(int PaymentNumber, string Status)
         {
             _dbContext.payment.Add(new Payment(PaymentNumber, Status));
+            _dbContext.SaveChanges();
             return _dbContext.payment.ToList();
+           
         }
 
         public List<Payment> GetListPayments()
