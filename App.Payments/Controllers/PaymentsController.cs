@@ -11,7 +11,8 @@ namespace App.Payments.Controllers
 {
     [Route("api/payments")]
     [ApiController]
-    [TypeFilter(typeof(PaymentsExceptionFilter), Arguments = new object[] { nameof(PaymentsController) })]
+    [ServiceFilter(typeof(PaymentsExceptionFilter))]
+    //[TypeFilter(typeof(PaymentsExceptionFilter), Arguments = new object[] { nameof(PaymentsController) })]
 
     public class PaymentsController : ControllerBase
     {
