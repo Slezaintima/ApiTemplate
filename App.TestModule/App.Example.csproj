@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -9,12 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\**\*.json" />
+    <Content Remove="Resources\**\*.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\**\*.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\**\*.json" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
