@@ -4,9 +4,9 @@ using System.Text;
 
 namespace App.Deposits.Exceptions
 {
-    public class InvalidDataDTOException : Exception
+    public class InvalidDataException : Exception
     {
-        public InvalidDataDTOException(string message) : base(message)
+        public InvalidDataException(string message) : base(message)
         {
 
         }

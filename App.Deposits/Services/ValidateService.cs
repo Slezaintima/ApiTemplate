@@ -24,7 +24,7 @@ namespace App.Deposits.Services
         {
             if (!IsValidInterestRate(createdDeposit))
             {
-                throw new InvalidDataDTOException("Invalid interest rate");
+                throw new InvalidDataException("Invalid interest rate");
             }
         }
 
@@ -32,7 +32,7 @@ namespace App.Deposits.Services
         {
             if (!IsValidDate(calculateDTO))
             {
-                throw new InvalidDataDTOException("Invalid date");
+                throw new InvalidDataException("Invalid date");
             }
         }
     }

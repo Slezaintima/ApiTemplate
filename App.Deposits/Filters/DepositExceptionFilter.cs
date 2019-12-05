@@ -28,7 +28,7 @@ namespace App.Deposits.Filters
 
             switch (context.Exception)
             {
-                case InvalidDataDTOException e:
+                case InvalidDataException e:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
 
