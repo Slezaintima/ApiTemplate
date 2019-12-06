@@ -9,11 +9,10 @@ using Newtonsoft.Json.Linq;
 
 namespace App.Payments.Localization
 {
-    // TODO description
     public class ResourceFileLocalizationManager : ILocalizationManager, ITransientDependency
     {
-        private const string DefaultCulture = "en-US"; // English
-        private const string ResourceFileFormat = "Resource.{0}.json";
+        private const string DefaultCulture = "en-US";
+        private const string ResourceFileFormat = "{0}.Resource.json";
         private const string ResourceFilePath = "Resources";
 
         private readonly ILogger<ResourceFileLocalizationManager> _logger;
@@ -113,10 +112,13 @@ namespace App.Payments.Localization
 
         private string GetAbsolutePath(string resourcePath)
         {
-            var path = resourcePath.Replace('/', '.');
-            var currentAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-            return currentAssembly.GetManifestResourceNames()
-                .FirstOrDefault(r => r.EndsWith(path));
+            var path = resourcePath
+                .Replace('\\', '.')
+                .Replace('/', '.');
+            var absoluteResourcePath = typeof(ResourceFileLocalizationManager).Assembly
+               .GetManifestResourceNames()
+               .FirstOrDefault(r => r.EndsWith(path));
+            return absoluteResourcePath;
         }
     }
 }

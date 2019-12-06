@@ -47,18 +47,19 @@ namespace App.Payments.Filters
                 case NumberAlreadyExists numberAlreadyExists:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        var errorMessage = _localizationManager.GetResource(numberAlreadyExists.Message);
-                        await context.HttpContext.Response.WriteAsync("Payment number already exists");
+                        var errorMessage = _localizationManager.GetResource("Payment number already exists");
+                        await context.HttpContext.Response.WriteAsync(errorMessage);
                         break;
                     }
                 default:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                        await context.HttpContext.Response.WriteAsync("Unhandled exception ! Please, contact support for resolve");
+                        var errorMessage = _localizationManager.GetResource("UnhandeledException");
+                        await context.HttpContext.Response.WriteAsync(errorMessage);
                         break;
                     }
             }
-            context.ExceptionHandled = true; // this flag should be set to true to stop exception propagation
+            context.ExceptionHandled = true;
         }
     }
 }

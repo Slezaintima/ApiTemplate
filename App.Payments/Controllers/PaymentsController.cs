@@ -12,8 +12,6 @@ namespace App.Payments.Controllers
     [Route("api/payments")]
     [ApiController]
     [ServiceFilter(typeof(PaymentsExceptionFilter))]
-    //[TypeFilter(typeof(PaymentsExceptionFilter), Arguments = new object[] { nameof(PaymentsController) })]
-
     public class PaymentsController : ControllerBase
     {
             readonly ILogger<PaymentsController> _logger;

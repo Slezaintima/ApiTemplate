@@ -29,13 +29,13 @@ namespace App.Payments.Repository
 
             if (Status != "InProcesing" && Status != "Success")
             {
-                throw new InvalidStatusException("This status is not right! Please, try again.");
+                throw new InvalidStatusException("Invalid status");
             }
             foreach (var p in dbPayments)
             {
                 if (p.PaymentNumber == PaymentNumber)
                 {
-                    throw new NumberAlreadyExists("This payment number is already exists!");
+                    throw new NumberAlreadyExists("Payment number already exists");
                 }
             }
 
@@ -64,7 +64,7 @@ namespace App.Payments.Repository
 
             if (Status != "InProcesing" && Status != "Success")
             {
-                throw new InvalidStatusException("This status is not right! Please, try again.");
+                throw new InvalidStatusException("Invalid status");
             }
 
             var payment = _dbContext.payment.ToList();

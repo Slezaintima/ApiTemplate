@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\App.Common\App.Common.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <Content Remove="Resources\**\*.json" />
   </ItemGroup>
 
@@ -12,47 +16,10 @@
     <EmbeddedResource Include="Resources\**\*.json" />
   </ItemGroup>
   
-  <!--
-  <ItemGroup>
-    <None Remove="Resources\Resource.de-de.json" />
-    <None Remove="Resources\Resource.en-US.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Resource.de-de.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Resource.en-US.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  -->
-
-  <!--
-  <ItemGroup>
-    <ProjectReference Include="..\App.Common\App.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Resources\**\*.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\**\*.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  -->
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.0" />
   </ItemGroup>
-
-  
-  <ItemGroup>
-    <ProjectReference Include="..\App.Common\App.Common.csproj" />
-  </ItemGroup>
-  
   
 </Project>
