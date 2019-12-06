@@ -23,7 +23,7 @@ namespace App.Currencies.Repositories
         public CurrencyRate GetCurrencyRate(DateTime date, string currencyName)
         {
             var currencyRate = StaticResources.CurrencyRateList
-                                  .First(c => c.Currency.Name == currencyName && c.Date == date);
+                                  .FirstOrDefault(c => c.Currency.Name == currencyName && c.Date == date);
 
             return currencyRate;
         }

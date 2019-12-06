@@ -16,8 +16,7 @@ namespace App.Customers.Controllers
         readonly ICustomersManager _customersManager;
 
         public CustomersController(ICustomersManager customersManager)
-        {
-           
+        {  
             _customersManager = customersManager;
         }
 
