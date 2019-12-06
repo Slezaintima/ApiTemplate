@@ -6,11 +6,10 @@ namespace App.Currencies.BusinessLogic
 {
     public interface ICurrenciesManager
     {
-        IEnumerable<Currency> GetAllCurrencies(DateTime date);
-        Currency GetConvertExchangeRate(Currency currencyConverFrom, Currency currencyConvertTo);
-        Currency GetCurrencyById(int id);
+        IEnumerable<Currency> GetAllCurrencies();
+        Currency GetCurrencyById(string name);
         void AddCurrency(Currency currency);
-        void UpdateCurrency(int currencyId);
-        void DeleteCurrency(int currencyId);
+        void UpdateCurrency(string name);
+        void DeleteCurrency(string name);
     }
 }

@@ -16,6 +16,8 @@ namespace App.Currencies
         {
             container.Register(Component.For<ICurrencyRepository>().ImplementedBy<CurrencyRepository>().LifestyleTransient());
             container.Register(Component.For<ICurrenciesManager>().ImplementedBy<CurrenciesManager>().LifestyleTransient());
+            container.Register(Component.For<ICurrencyRateRepository>().ImplementedBy<CurrencyRateRepository>().LifestyleTransient());
+            container.Register(Component.For<ICurrencyRateManager>().ImplementedBy<CurrencyRateManager>().LifestyleTransient());
         }
     }
 }

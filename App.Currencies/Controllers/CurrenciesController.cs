@@ -22,27 +22,15 @@ namespace App.Currencies.Controllers
         [ApiExplorerSettings(IgnoreApi = true)]
         public IEnumerable<Currency> Get(DateTime date)
         {
-            var result = this.currenciesManager.GetAllCurrencies(date.Date);
+            var result = this.currenciesManager.GetAllCurrencies();
             return result.ToList();
         }
 
-        [HttpGet]
-        [Route("GetExchangeRate")]
-        public ActionResult<Currency> GetConvertRate(int currencyConvertFromId, decimal amountToConvert, int currencyConvertToId)
-        {
-            var currencyConvertFrom = this.currenciesManager.GetCurrencyById(currencyConvertFromId);
-            currencyConvertFrom.Amount = amountToConvert;
-            var currencyConvertTo = this.currenciesManager.GetCurrencyById(currencyConvertToId);
-
-            var result = this.currenciesManager.GetConvertExchangeRate(currencyConvertFrom, currencyConvertTo);
-            return result;
-        }
-
         [HttpPost]
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public Currency GetCurrency(int currencyId)
+        [Route("GetCurrencyById")]
+        public Currency GetCurrency(string name)
         {
-            return this.currenciesManager.GetCurrencyById(currencyId);
+            return this.currenciesManager.GetCurrencyById(name);
         }
 
         [HttpPost]
@@ -54,9 +42,9 @@ namespace App.Currencies.Controllers
 
         [HttpDelete]
         [ApiExplorerSettings(IgnoreApi = true)]
-        public void DeleteCurrency(int currencyId)
+        public void DeleteCurrency(string name)
         {
-            this.currenciesManager.DeleteCurrency(currencyId);
+            this.currenciesManager.DeleteCurrency(name);
         }
     }
 }

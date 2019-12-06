@@ -6,8 +6,8 @@ namespace App.Repositories
 {
     public interface ICurrencyRepository
     {
-        IEnumerable<Currency> GetAllCurrencies(DateTime date);
-        Currency GetCurrencyById(int id);
+        IEnumerable<Currency> GetAllCurrencies();
+        Currency GetCurrencyByName(string name);
         void AddCurrency(Currency currency);
         void UpdateCurrency(Currency currency);
         void DeleteCurrency(Currency currency);

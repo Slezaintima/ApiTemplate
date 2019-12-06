@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using App.Currencies.Repositories;
 using App.Models;
 using App.Repositories;
 
@@ -17,21 +15,14 @@ namespace App.Currencies.BusinessLogic
             this.currencyRepository = currencyRepository;
         }
 
-        public IEnumerable<Currency> GetAllCurrencies(DateTime date)
+        public IEnumerable<Currency> GetAllCurrencies()
         {
-            return this.currencyRepository.GetAllCurrencies(date);
+            return this.currencyRepository.GetAllCurrencies();
         }
 
-        public Currency GetConvertExchangeRate(Currency currencyConvertFrom, Currency currencyConvertTo)
+        public Currency GetCurrencyById(string name)
         {
-            decimal result = (currencyConvertTo.ValuePerDollar / currencyConvertFrom.ValuePerDollar) * currencyConvertFrom.Amount.Value;
-            currencyConvertTo.Amount = result;
-            return currencyConvertTo;
-        }
-
-        public Currency GetCurrencyById(int id)
-        {
-            return this.currencyRepository.GetCurrencyById(id);
+            return this.currencyRepository.GetCurrencyByName(name);
         }
 
         public void AddCurrency(Currency currency)
@@ -39,15 +30,15 @@ namespace App.Currencies.BusinessLogic
             this.currencyRepository.AddCurrency(currency);
         }
 
-        public void DeleteCurrency(int currencyId)
+        public void DeleteCurrency(string name)
         {
-            var currency = this.currencyRepository.GetCurrencyById(currencyId);
+            var currency = this.currencyRepository.GetCurrencyByName(name);
             this.currencyRepository.DeleteCurrency(currency);
         }
 
-        public void UpdateCurrency(int currencyId)
+        public void UpdateCurrency(string name)
         {
-            var currency = this.currencyRepository.GetCurrencyById(currencyId);
+            var currency = this.currencyRepository.GetCurrencyByName(name);
             this.currencyRepository.UpdateCurrency(currency);
         }
     }
