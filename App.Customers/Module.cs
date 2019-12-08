@@ -16,9 +16,6 @@ namespace App.Customers
     {
         public void Initialize(IWindsorContainer container)
         {
-            // example of manually registered components
-            container.Register(Component.For<ICustomersManager>().ImplementedBy<CustomerManager>().LifestyleTransient());
-           
             RegisterDbContext(container);
         }
 

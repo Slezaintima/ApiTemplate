@@ -17,7 +17,7 @@ namespace App.Customers
         void Add(Customer customers);
         void Update(Customer newCustomer);
     }
-    public class CustomerManager:ICustomersManager
+    public class CustomerManager:ICustomersManager,ITransientDependency
     {
         readonly ICustomersRepository _repository;
         public CustomerManager(ICustomersRepository repository)
