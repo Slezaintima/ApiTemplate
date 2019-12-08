@@ -1,0 +1,5 @@
+{
+  "ResourceNotFound": "Resource was not found",
+  "Id Collision of Customers": "Id Collision of Customers",
+  "UnhandeledException": "Unhandled exception occurred !"
+}
