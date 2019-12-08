@@ -1,0 +1,5 @@
+{
+  "CustomerNotFound": "Kunde wurde nicht gefunden",
+  "Id Collision of Customers": "ID-Kollision von Kunden",
+  "UnhandeledException": "Eine nicht behandelte Ausnahme ist aufgetreten!"
+}
