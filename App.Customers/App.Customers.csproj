@@ -5,13 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\deu.Resource.json" />
-    <None Remove="Resources\eng.Resource.json" />
+    <Content Remove="Resources\**\*.json" />
   </ItemGroup>
-
   <ItemGroup>
-    <EmbeddedResource Include="Resources\deu.Resource.json" />
-    <EmbeddedResource Include="Resources\eng.Resource.json" />
+    <EmbeddedResource Include="Resources\**\*.json" />
   </ItemGroup>
 
   <ItemGroup>
