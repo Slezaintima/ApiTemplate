@@ -14,5 +14,10 @@ namespace App.Models
 
         public int PaymentNumber { get; set; }
         public string Status { get; set; }
+
+        public Payment()
+        {
+
+        }
     }
 }
