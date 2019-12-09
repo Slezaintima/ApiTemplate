@@ -11,7 +11,7 @@ namespace App.Customers.Controllers
 {
     [Route("api/customers")]
     [ApiController]
-    [TypeFilter(typeof(CustomerExceptionFilter), Arguments = new object[] { nameof(CustomersController) })]
+    [TypeFilter(typeof(CustomerExceptionFilter))]
     public class CustomersController:ControllerBase
     {
         readonly ILogger<CustomersController> _logger;
