@@ -9,6 +9,7 @@ namespace App.Goods.Database
     public class GoodsDbContext: DbContext
     {
         public DbSet<Good> Goods { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public GoodsDbContext(DbContextOptions<GoodsDbContext> options) : base(options)
         {
         }
@@ -16,6 +17,8 @@ namespace App.Goods.Database
         {
             builder.Entity<Good>()
                 .HasKey(g => g.Id);
+            builder.Entity<Order>()
+                .HasKey(o=> o.Id);
         }
     }
 }
