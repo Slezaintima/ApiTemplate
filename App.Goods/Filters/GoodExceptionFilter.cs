@@ -12,17 +12,15 @@ namespace App.Goods.Filters
 {
     public class GoodExceptionFilter:IAsyncExceptionFilter
     {
-        readonly string _context;
         readonly ILogger<GoodExceptionFilter> _logger;
-        public GoodExceptionFilter(ILogger<GoodExceptionFilter> logger, string context)
+        public GoodExceptionFilter(ILogger<GoodExceptionFilter> logger)
         {
             _logger = logger;
-            _context = context;
         }
 
          public async Task OnExceptionAsync(ExceptionContext context)
         {
-
+            var _context = context.ActionDescriptor.DisplayName;
             _logger.LogError(context.Exception, $"Error occurred in context of {_context}");
             switch (context.Exception)
             {

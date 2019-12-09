@@ -9,7 +9,7 @@ using System.Text;
 
 namespace App.Goods.Repositories
 {
-    public class EfGoodsRepository:ITransientDependency, IGodsRepository
+    public class EfGoodsRepository: ITransientDependency, IGodsRepository,IDisposable
     {
         private readonly GoodsDbContext _dbContext;
         public EfGoodsRepository(GoodsDbContext dbContext)

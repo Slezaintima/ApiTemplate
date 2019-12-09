@@ -8,7 +8,7 @@ using System.Text;
 
 namespace App.Goods.Repositories
 {
-    public class EfOrderRepository : ITransientDependency, IOrderRepository
+    public class EfOrderRepository : ITransientDependency, IOrderRepository,IDisposable
     {
         private readonly GoodsDbContext _dbContext;
         public EfOrderRepository(GoodsDbContext dbContext)
@@ -19,6 +19,10 @@ namespace App.Goods.Repositories
         {
             _dbContext.Orders.Add(order);
             _dbContext.SaveChanges();
+        }
+        public void Dispose()
+        {
+            _dbContext?.Dispose();
         }
     }
 }

@@ -12,13 +12,10 @@ using App.Models;
 
 namespace App.Goods
 {
-    public class Module
+    public class Module:IModule
     {
         public void Initialize(IWindsorContainer container)
         {
-            // example of manually registered components
-            container.Register(Component.For<IGoodsManager>().ImplementedBy<GoodsManager>().LifestyleTransient());
-            container.Register(Component.For<IOrderManager>().ImplementedBy<OrderManager>().LifestyleTransient());
             RegisterDbContext(container);
         }
 
