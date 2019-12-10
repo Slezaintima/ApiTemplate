@@ -1,6 +1,5 @@
 {
-  "Account alredy blocked": "Konto bereits gesperrt",
-  "Account already unblocked": "Konto bereits entsperrt",
-  "Not Found": "Nicht gefunden",
-  "Unhandled exception": "Unbehandelte Ausnahme ! Bitte wenden Sie sich an den Support, um eine Lösung zu finden"
+    "ResourceNotFound": "Ressource wurde nicht gefunden",
+    "InvalidBusinessOperation": "Hände hoch, alles kaputt",
+    "UnhandeledException": "Eine nicht behandelte Ausnahme ist aufgetreten!"
 }

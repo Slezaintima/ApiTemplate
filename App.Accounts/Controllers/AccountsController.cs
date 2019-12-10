@@ -10,7 +10,7 @@ namespace App.Accounts.Controllers
 {
 	[Route("api/accounts")]
 	[ApiController]
-	[ServiceFilter(typeof(AccountsExceptionFilter))]
+	[TypeFilter(typeof(AccountsExceptionFilter), Arguments = new object[] { nameof(AccountsController) })]
 	public class AccountsController : ControllerBase
 	{
 		readonly ILogger<AccountsController> _logger;
@@ -21,7 +21,7 @@ namespace App.Accounts.Controllers
 			_accountsManager = accountsManager;
 		}
 
-		// GET api/example/values 
+		// GET api/example/values
 		[HttpGet]
 		public List<Account> Get()
 		{

@@ -35,7 +35,7 @@ namespace App.Accounts
 				{
 					new Account(1,false),
 					new Account(2,true),
-					new Account(3,false)
+					new Account (3, false)
 				});
 
 				// save changes in the context

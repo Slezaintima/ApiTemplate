@@ -1,6 +1,5 @@
 {
-  "Account alredy blocked": "Account alredy blocked",
-  "Account already unblocked": "Account already unblocked",
-  "Not Found": "Not Found",
-  "Unhandled exception": "Unhandled exception ! Please, contact support for resolve"
+    "ResourceNotFound": "Resource was not found",
+    "InvalidBusinessOperation": "Invalid business operation",
+    "UnhandeledException": "Unhandled exception occurred !"
 }
