@@ -9,10 +9,7 @@ namespace App.Accounts
 			Number = number;
 			IsBlocked = isBlocked;
 		}
-		public Account()
-		{
 
-		}
 		public int Number { get; set; }
 		public bool IsBlocked { get; set; }
 
