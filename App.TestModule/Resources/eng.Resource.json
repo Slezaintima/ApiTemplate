@@ -1,5 +1,5 @@
 {
-  "ResourceNotFound": "Resource was not found",
-  "InvalidBusinessOperation": "Invalid business operation",
-  "UnhandeledException": "Unhandled exception occurred !"
+    "ResourceNotFound": "Resource was not found",
+    "InvalidBusinessOperation": "Invalid business operation",
+    "UnhandeledException": "Unhandled exception occurred !"
 }
