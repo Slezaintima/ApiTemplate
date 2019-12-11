@@ -7,15 +7,19 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using System.Net;
 using App.Goods.Exceptions;
+using App.Goods.Localization;
 
 namespace App.Goods.Filters
 {
     public class GoodExceptionFilter:IAsyncExceptionFilter
     {
         readonly ILogger<GoodExceptionFilter> _logger;
-        public GoodExceptionFilter(ILogger<GoodExceptionFilter> logger)
+        readonly ILocalizationManager _localizationManager;
+        public GoodExceptionFilter(ILogger<GoodExceptionFilter> logger,
+            ILocalizationManager localizationManager)
         {
             _logger = logger;
+            _localizationManager = localizationManager;
         }
 
          public async Task OnExceptionAsync(ExceptionContext context)
@@ -27,19 +31,22 @@ namespace App.Goods.Filters
                 case GoodNotFoundException entityNotFound:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                        await context.HttpContext.Response.WriteAsync($"Not Found: {entityNotFound.EntityType.AssemblyQualifiedName}");
+                        var errorMessage = _localizationManager.GetResource("GoodsNotFound");
+                        await context.HttpContext.Response.WriteAsync(errorMessage);
                         break;
                     }
                 case OrderCreationException orderCreationException:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        await context.HttpContext.Response.WriteAsync("Invalid order creation operation");
+                        var errorMessage = _localizationManager.GetResource("InvalidOrder");
+                        await context.HttpContext.Response.WriteAsync(errorMessage);
                         break;
                     }
                 default:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                        await context.HttpContext.Response.WriteAsync("Unhandled exception ! Please, contact support for resolve");
+                        var errorMessage = _localizationManager.GetResource("UnhandeledException");
+                        await context.HttpContext.Response.WriteAsync(errorMessage);
                         break;
                     }
             }
