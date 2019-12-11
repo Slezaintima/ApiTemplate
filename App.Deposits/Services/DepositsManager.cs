@@ -47,11 +47,11 @@ namespace App.Deposits
         {
             logger.LogInformation($"Call GetDepositById");
 
-            var deposit = depositsRepository.GetById(id);
+            var deposit = depositsRepository.GetById(id); // Getting an entity from DataBase
 
-            if (deposit == null)
+            if (deposit == null) // Check if it exists
             {
-                throw new EntityNotExistException(typeof (Deposit), id);
+                throw new EntityNotExistException(typeof (Deposit), id); 
             }
 
             return deposit;
