@@ -1,52 +1,57 @@
 ﻿using App.Accounts.Exceptions;
+using App.Accounts.Localization;
+using App.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace App.Accounts.Filters
 {
-	public class AccountsExceptionFilter : IAsyncExceptionFilter
+	public class AccountsExceptionFilter : IAsyncExceptionFilter, ITransientDependency
 	{
-		readonly string _context;
 		readonly ILogger<AccountsExceptionFilter> _logger;
-		public AccountsExceptionFilter(ILogger<AccountsExceptionFilter> logger, string context)
+		readonly ILocalizationManager _localizationManager;
+		public AccountsExceptionFilter(ILogger<AccountsExceptionFilter> logger, ILocalizationManager localizationManager)
 		{
 			_logger = logger;
-			_context = context;
+			_localizationManager = localizationManager;
 		}
 
 		public async Task OnExceptionAsync(ExceptionContext context)
 		{
+			var _context = context.ActionDescriptor.DisplayName;
 			_logger.LogError(context.Exception, $"Error occurred in context of {_context}");
 			switch (context.Exception)
 			{
 				case AccountAlreadyBlockedException accountAlreadyBlocked:
 					{
 						context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-						await context.HttpContext.Response.WriteAsync("Account alredy blocked");
+						var errorMessage = _localizationManager.GetResource("Account alredy blocked");
+						await context.HttpContext.Response.WriteAsync(errorMessage);
 						break;
 					}
 				case AccountAlreadyUnblockedException accountAlreadyUnblocked:
 					{
 						context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-						await context.HttpContext.Response.WriteAsync("Account already unblocked");
+						var errorMessage = _localizationManager.GetResource("Account already unblocked");
+						await context.HttpContext.Response.WriteAsync(errorMessage);
 						break;
 					}
 				case EntityNotFoundException entityNotFound:
 					{
 						context.HttpContext.Response.StatusCode = (int)HttpStatusCode.NotFound;
-						await context.HttpContext.Response.WriteAsync($"Not Found: {entityNotFound.EntityType.AssemblyQualifiedName}");
+						var errorMessage = _localizationManager.GetResource("Entity Not Found");
+						await context.HttpContext.Response.WriteAsync(errorMessage);
 						break;
 					}
 				default:
 					{
-						context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError; 
-						await context.HttpContext.Response.WriteAsync("Unhandled exception ! Please, contact support for resolve");
+						context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+						var errorMessage = _localizationManager.GetResource("Unhandled exception");
+						await context.HttpContext.Response.WriteAsync(errorMessage);
 						break;
 					}
 			}
