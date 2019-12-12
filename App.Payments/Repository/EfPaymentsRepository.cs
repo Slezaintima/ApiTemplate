@@ -1,4 +1,4 @@
-﻿using App.Configuration;
+using App.Configuration;
 using App.Models;
 using App.Payments.Database;
 using App.Payments.Exceptions;
@@ -47,11 +47,6 @@ namespace App.Payments.Repository
 
         public List<Payment> GetListPayments()
         {
-            if(_dbContext.payment==null)
-            {
-                throw new EmptyList("List is empty!");
-            }
-
             return _dbContext.payment.ToList();
         }
 

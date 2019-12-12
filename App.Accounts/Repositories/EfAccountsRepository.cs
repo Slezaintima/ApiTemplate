@@ -1,4 +1,5 @@
 ﻿using App.Accounts.Database;
+using App.Accounts.Exceptions;
 using App.Configuration;
 using App.Repositories;
 using System;
@@ -19,18 +20,38 @@ namespace App.Accounts.Repositories
 		public void BlockAccount(int number)
 		{
 			var account = _dbContext.Accounts.Where(a => a.Number == number).FirstOrDefault();
+			if (account == null)
+			{
+				throw new EntityNotFoundException(typeof(Account));
+			}
+			if (account.IsBlocked)
+			{
+				throw new AccountAlreadyBlockedException("You cannot block an already blocked account");
+			}
 			account.IsBlocked = true;
 			_dbContext.SaveChanges();
 		}
 
 		public List<Account> GetListAccounts()
 		{
+			if (_dbContext.Accounts == null)
+			{
+				throw new ArgumentNullException("Db accounts is empty");
+			}
 			return _dbContext.Accounts.ToList();
 		}
 
 		public void UnBlockAccount(int number)
 		{
 			var account = _dbContext.Accounts.Where(a => a.Number == number).FirstOrDefault();
+			if (account == null)
+			{
+				throw new EntityNotFoundException(typeof(Account));
+			}
+			if (!account.IsBlocked)
+			{
+				throw new AccountAlreadyUnblockedException("You cannot Unblock an already Unblocked account");
+			}
 			account.IsBlocked = false;
 			_dbContext.SaveChanges();
 		}
