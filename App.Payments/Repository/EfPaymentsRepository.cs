@@ -1,4 +1,4 @@
-﻿using App.Configuration;
+using App.Configuration;
 using App.Models;
 using App.Payments.Database;
 using App.Payments.Exceptions;
