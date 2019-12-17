@@ -4,35 +4,48 @@ using System.Text;
 using App.Models;
 using App.Repositories;
 using System.Linq;
+using App.Currencies.DataBaseLogic;
+using App.Configuration;
 
 namespace App.Currencies.Repositories
 {
-    public class CurrencyRepository : ICurrencyRepository
+    class CurrencyRepository : ICurrencyRepository, IDisposable, ITransientDependency
     {
+        private readonly CurrencyDbContext _dbContext;
+
+        public CurrencyRepository(CurrencyDbContext context)
+        {
+            _dbContext = context;
+        }
+
         public IEnumerable<Currency> GetAllCurrencies()
         {
-            return StaticResources.CurrencyList;
+            return _dbContext.Currencies.ToList();
         }
 
         public Currency GetCurrencyByName(string name)
         {
-            return StaticResources.CurrencyList.First(i => i.Name == name);
+            return _dbContext.Currencies.First(i => i.Name == name);
         }
 
         public void AddCurrency(Currency currency)
         {
-            StaticResources.CurrencyList.Add(currency);
+            _dbContext.Currencies.Add(currency);
         }
 
         public void DeleteCurrency(Currency currency)
         {
-            StaticResources.CurrencyList.Remove(currency);
+            _dbContext.Currencies.Remove(currency);
         }
 
         public void UpdateCurrency(Currency currency)
         {
-            var index = StaticResources.CurrencyList.FindIndex(c => c.Name == currency.Name);
-            StaticResources.CurrencyList.Insert(index, currency);
+            _dbContext.Currencies.Update(currency);
+        }
+
+        public void Dispose()
+        {
+            _dbContext?.Dispose();
         }
     }
 }

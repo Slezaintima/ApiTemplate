@@ -25,7 +25,7 @@ namespace App.Currencies.BusinessLogic
         {
             var result = this._currencyRateRepository.GetCurrencyRate(date, currencyName);
             if (result == null)
-                throw new NotFoundException("There is no such currency");
+                throw new NotFoundException("No such currency or exchange rate data for given date");
             return result;
         }
     }
