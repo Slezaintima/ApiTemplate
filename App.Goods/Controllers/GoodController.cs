@@ -9,7 +9,7 @@ using App.Goods.Filters;
 
 namespace App.Goods.Controllers
 {
-    [TypeFilter(typeof(GoodExceptionFilter), Arguments = new object[] { nameof(GoodController) })]
+    [TypeFilter(typeof(GoodExceptionFilter))]
     [Route("api/goods")]
     [ApiController]
     public class GoodController: ControllerBase
