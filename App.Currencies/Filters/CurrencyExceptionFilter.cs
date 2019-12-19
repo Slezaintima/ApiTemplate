@@ -14,11 +14,13 @@ namespace App.Currencies.Filters
     {
         readonly string _context;
         readonly ILogger<CurrencyExceptionFilter> _logger;
+        readonly ILocalizationManager localizationManager;
 
-        public CurrencyExceptionFilter(ILogger<CurrencyExceptionFilter> logger, string context)
+        public CurrencyExceptionFilter(ILogger<CurrencyExceptionFilter> logger, string context, ILocalizationManager manager)
         {
             _logger = logger;
             _context = context;
+            this.localizationManager = manager;
         }
 
         public async Task OnExceptionAsync(ExceptionContext context)
@@ -29,19 +31,22 @@ namespace App.Currencies.Filters
                 case ForbiddenException forbiden:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
-                        await context.HttpContext.Response.WriteAsync($"Access to resource {context.HttpContext.Request.Path} forbidden");
+                        var errorMessage = localizationManager.GetResource("Forbidden Exception");
+                        await context.HttpContext.Response.WriteAsync(errorMessage);
                         break;
                     }
                 case NotFoundException alreadyExist:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                        await context.HttpContext.Response.WriteAsync($"Specified resource {context.HttpContext.Request.Query} not found");
+                        var errorMessage = localizationManager.GetResource("Not Found Exception");
+                        await context.HttpContext.Response.WriteAsync(errorMessage);
                         break;
                     }
                 default:
                     {
                         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                        await context.HttpContext.Response.WriteAsync("Unhandled exception ! Please, contact support for resolve");
+                        var errorMessage = localizationManager.GetResource("UnhandeledException");
+                        await context.HttpContext.Response.WriteAsync(errorMessage);
                         break;
                     };
 

@@ -1,0 +1,5 @@
+﻿{
+  "ForbiddenException": "Du hast keine Erlaubnis",
+  "Not Found Exception": "Keine solche Ressource",
+  "UnhandeledException": "Serverfehler Administrator kontaktieren"
+}
