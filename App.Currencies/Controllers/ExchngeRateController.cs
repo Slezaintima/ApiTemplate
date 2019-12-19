@@ -30,7 +30,7 @@ namespace App.Currencies.Controllers
         [Route("GetExchangeRate")]
         public ActionResult<CurrencyRate> GetCurrencyRate(DateTime date, string name)
         {
-            _logger.LogDebug("Call GetCurrencyRate method");
+            _logger.LogInformation("Call GetCurrencyRate method");
             return this._currencyRateManager.GetCurrencyRate(date, name);
         }
     }

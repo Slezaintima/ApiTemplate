@@ -22,8 +22,7 @@ namespace App.Currencies.Controllers
         }
 
         [HttpGet]
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public IEnumerable<Currency> Get()
+        public ActionResult<IEnumerable<Currency>> Get()
         {
             var result = this.currenciesManager.GetAllCurrencies();
             return result.ToList();
@@ -33,22 +32,21 @@ namespace App.Currencies.Controllers
         [Route("GetCurrencyById")]
         public ActionResult<Currency> GetCurrency(string name)
         {
-            throw new ForbiddenException("you don't have permission for such action");
-            //return this.currenciesManager.GetCurrencyById(name);
+            return this.currenciesManager.GetCurrencyById(name);
         }
 
         [HttpPost]
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public void AddCurrency(Currency currency)
+        public ActionResult AddCurrency(Currency currency)
         {
             this.currenciesManager.AddCurrency(currency);
+            return Ok(currency);
         }
 
         [HttpDelete]
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public void DeleteCurrency(string name)
+        public ActionResult DeleteCurrency(string name)
         {
             this.currenciesManager.DeleteCurrency(name);
+            return Ok();
         }
     }
 }
