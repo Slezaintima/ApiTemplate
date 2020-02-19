@@ -130,8 +130,8 @@ namespace App.Deposits.Localization
         private string GetAbsolutePath(string resourcePath)
         {
             var path = resourcePath
-                .Replace('\\', '/')
-                .Replace('/', '\\');
+                .Replace('\\', '.')
+                .Replace('/', '.');
 
             var absoluteResourcePath =  typeof(ResourceFileLocalizationManager).Assembly
                 .GetManifestResourceNames()
