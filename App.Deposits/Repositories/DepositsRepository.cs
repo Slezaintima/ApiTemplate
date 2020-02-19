@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace App.Deposits.Repositories
 {
-    public class DepositsRepository :IDepositsRepository, ITransientDependency
+    public class DepositsRepository 
     {
         private static readonly List<Deposit> deposits = Init();
 
