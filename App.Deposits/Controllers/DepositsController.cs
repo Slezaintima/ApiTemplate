@@ -9,7 +9,7 @@ namespace App.Deposits.Controller
 {
     [Route("api/deposits")]
     [ApiController]
-    [TypeFilter(typeof(DepositsExceptionFilter), Arguments = new object[] { nameof(DepositsController) })]
+    [TypeFilter(typeof(DepositsExceptionFilter), Arguments = new object[] { nameof(DepositsExceptionFilter) })]
     public class DepositsController : ControllerBase
     {
         private readonly ILogger<DepositsController> logger;
@@ -38,7 +38,7 @@ namespace App.Deposits.Controller
             return Ok(depositsManager.GetAllDeposits());
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public ActionResult<Deposit> GetDepositById(int id)
         {
             logger.LogInformation($"Call GetDepositById(int id) with id: {id}");
